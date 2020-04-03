@@ -48,7 +48,7 @@
                       class="form-control"
                       id="custDOB"
                       type="text"
-                      placeholder="Please enter DOB (DD/MM/YYYY - Required)"
+                      placeholder="Please enter DOB (yyyy/MM/dd - Required)"
                       formControlName="custDOB"
                       (blur)="blur()" />
                 <span class="invalid-feedback" *ngIf="displayMessage.custDOB">
@@ -64,7 +64,7 @@
                 <input [ngClass]="{'is-invalid': displayMessage.custEmail}" 
                       class="form-control"
                       id="custEmail"
-                      type="text"
+                      type="email" 
                       placeholder="Please ender email address (required)"
                       formControlName="custEmail"
                       (blur)="blur()" />

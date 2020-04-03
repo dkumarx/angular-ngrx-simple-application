@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl  } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
 
@@ -33,10 +33,12 @@ export class CustomerNewComponent implements OnInit, OnDestroy {
         required: 'First Name is required.'
       },
       custDOB: {
-        required: 'DOB (MM/DD/YYYY) is required.'
+        required: 'DOB is required.',
+        pattern: 'Please enter valid DOB (yyyy/MM/ddd)'
       },
       custEmail: {
-        required: 'Email is required.'
+        required: 'Email is required.',
+        pattern: 'Please enter valid email address.'
       }
     };
 
@@ -48,8 +50,18 @@ export class CustomerNewComponent implements OnInit, OnDestroy {
     this.customerForm = this.fb.group({
       custFirstName: ['', [Validators.required]],
       custLastName: [''],
-      custDOB: ['', Validators.required],
-      custEmail: ['', Validators.required],
+      custDOB: ['', 
+        [
+          Validators.required,
+          Validators.pattern('([12]\d{3}\/(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01]))')
+        ]
+      ],
+      custEmail: ['',
+        [
+            Validators.required,
+            Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        ]
+      ],
       custPhone: [''],
       custAddress: ['']
     });

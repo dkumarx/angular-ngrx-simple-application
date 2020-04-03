@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl  } from '@angular/forms';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { RegEx, FormFieldsMessages } from "../../constants/index";
 
 import { Customer } from '../../models/customer';
 import { CustomerService } from '../customers.service';
@@ -13,12 +13,12 @@ import { GenericValidator } from '../../shared/generic-validator';
   styleUrls: ['./customer-new.component.css']
 })
 export class CustomerNewComponent implements OnInit, OnDestroy {
+  ffMsgs = FormFieldsMessages
   pageTitle = 'New customer registration';
   errorMessage = '';
   customerForm: FormGroup;
 
   customer: Customer | null;
-  sub: Subscription;
 
   // Use with the generic validation message class
   displayMessage: { [key: string]: string } = {};
@@ -30,24 +30,27 @@ export class CustomerNewComponent implements OnInit, OnDestroy {
 
     this.validationMessages = {
       custFirstName: {
-        required: 'First Name is required.'
+        required: this.ffMsgs.FIRST_NAME.REQUIRED,
+        pattern: this.ffMsgs.FIRST_NAME.VALIDATION
       },
       custLastName: {
-        required: 'Last Name is required.'
+        required: this.ffMsgs.LAST_NAME.REQUIRED,
+        pattern: this.ffMsgs.LAST_NAME.VALIDATION
       },
       custDOB: {
-        required: 'DOB is required.',
-        pattern: 'Please enter valid DOB (yyyy/MM/ddd)'
+        required: this.ffMsgs.DOB.REQUIRED,
+        pattern: this.ffMsgs.DOB.VALIDATION
       },
       custEmail: {
-        required: 'Email is required.',
-        pattern: 'Please enter valid email address.'
+        required: this.ffMsgs.EMIAL.REQUIRED,
+        pattern: this.ffMsgs.EMIAL.VALIDATION
       },
       custPhone: {
-        required: 'Phone number is required.'
+        required: this.ffMsgs.PHONE.REQUIRED,
+        pattern: this.ffMsgs.PHONE.VALIDATION
       },
       custAddress: {
-        required: 'Address is required.'
+        required: this.ffMsgs.ADDRESS.REQUIRED
       }
     };
 
@@ -57,21 +60,26 @@ export class CustomerNewComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Define the form group
     this.customerForm = this.fb.group({
-      custFirstName: ['', [Validators.required]],
-      custLastName: ['',  Validators.required],
-      custDOB: ['', 
-        [
+      custFirstName: ['', [
+        Validators.required,
+        Validators.pattern(RegEx.CHAR_ONLY)
+      ]],
+      custLastName: ['',  [
+        Validators.required,
+        Validators.pattern(RegEx.CHAR_ONLY)
+      ]],
+      custDOB: ['', [
+        Validators.required,
+        Validators.pattern(RegEx.DOB)
+      ]],
+      custEmail: ['', [
           Validators.required,
-          Validators.pattern('([12]\d{3}\/(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01]))')
-        ]
-      ],
-      custEmail: ['',
-        [
-            Validators.required,
-            Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-        ]
-      ],
-      custPhone: ['', Validators.required],
+          Validators.pattern(RegEx.EMAIL)
+      ]],
+      custPhone: ['', [
+        Validators.required,
+        Validators.pattern(RegEx.PHONE)
+      ]],
       custAddress: ['', Validators.required]
     });
 

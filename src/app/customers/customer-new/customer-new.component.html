@@ -14,7 +14,7 @@
                       class="form-control" 
                       id="custFirstName" 
                       type="text" 
-                      placeholder="Please enter first name (required)" 
+                      placeholder="Please enter first name (required)"
                       formControlName="custFirstName" 
                       (blur)="blur()" />
                 <span class="invalid-feedback" *ngIf="displayMessage.custFirstName">
@@ -47,8 +47,8 @@
                 <input [ngClass]="{'is-invalid': displayMessage.custDOB}" 
                       class="form-control"
                       id="custDOB"
-                      type="text"
-                      placeholder="Please enter DOB (yyyy/MM/dd - Required)"
+                      type="datatime"
+                      placeholder="Please enter DOB (yyyy-MM-dd - Required)"
                       formControlName="custDOB"
                       (blur)="blur()" />
                 <span class="invalid-feedback" *ngIf="displayMessage.custDOB">
@@ -82,7 +82,7 @@
                       class="form-control"
                       id="custPhone"
                       type="text"
-                      placeholder="Please enter phone number"
+                      placeholder="Please enter phone number  (required)"
                       formControlName="custPhone"
                       (blur)="blur()" />
                 <span class="invalid-feedback" *ngIf="displayMessage.custPhone">
@@ -99,7 +99,7 @@
                       class="form-control"
                       id="custAddress"
                       type="text"
-                      placeholder="Please enter address"
+                      placeholder="Please enter address  (required)"
                       formControlName="custAddress"
                       (blur)="blur()" />
                 <span class="invalid-feedback" *ngIf="displayMessage.custAddress">

@@ -1,0 +1,19 @@
+<div class="card">
+
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+  
+    <div class="card-body" *ngIf="customers?.length">
+      <div class="list-group">
+        <button class="list-group-item list-group-item-action rounded-0"
+            *ngFor="let customer of customers"
+            [ngClass]="{'active': customer?.id === selectedCustomer?.id}"
+            (click)="customerSelected(customer)">{{ customer.custFirstName }} {{ customer.custLastName }}
+          <ng-container *ngIf="displayCode">
+            ({{ customer.custLastName }})
+          </ng-container>
+        </button>
+      </div>
+    </div>
+  </div>

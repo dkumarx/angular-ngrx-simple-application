@@ -1,19 +1,31 @@
-<div class="card">
 
+  <div class="card">
     <div class="card-header">
-      {{pageTitle}}
+      <h4>{{pageTitle}}</h4>
     </div>
   
-    <div class="card-body" *ngIf="customers?.length">
-      <div class="list-group">
-        <button class="list-group-item list-group-item-action rounded-0"
-            *ngFor="let customer of customers"
+    <div class="card-body p-0" *ngIf="customers?.length">
+      <table class="table table-hover m-0 p-0">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col" sortable="name">Full Name</th>
+          <th scope="col" sortable="area">Email</th>
+          <th scope="col" sortable="population">DOB</th>
+          <th scope="col" sortable="name">Customer Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let customer of customers">
+          <th scope="row">{{ customer.id }}</th>
+          <td>{{ customer.custFirstName }} {{ customer.custLastName }}</td>
+          <td> <button class="btn btn-link"
             [ngClass]="{'active': customer?.id === selectedCustomer?.id}"
-            (click)="customerSelected(customer)">{{ customer.custFirstName }} {{ customer.custLastName }}
-          <ng-container *ngIf="displayCode">
-            ({{ customer.custLastName }})
-          </ng-container>
-        </button>
-      </div>
+            (click)="customerSelected(customer)">{{customer.custEmail}}</button></td>
+          <td>{{customer.custDOB}}</td>
+          <td>{{customer.id}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>

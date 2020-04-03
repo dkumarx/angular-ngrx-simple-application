@@ -1,129 +1,133 @@
-<div class="card">
-  <div class="card-header">
-    {{pageTitle}}
+<div class="d-flex justify-content-center">  
+  <div class="col-5">
+    <div class="card">
+      <div class="card-header">
+       <h4>{{pageTitle}}</h4>
+      </div>
+      <div class="card-body">
+        <form novalidate (ngSubmit)="saveCustomer()" [formGroup]="customerForm">
+          <fieldset>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="custFirstName">First Name</label>
+              <div class="col-md-9">
+                <input [ngClass]="{'is-invalid': displayMessage.custFirstName }" 
+                      class="form-control" 
+                      id="custFirstName" 
+                      type="text" 
+                      placeholder="Please enter first name (required)" 
+                      formControlName="custFirstName" 
+                      (blur)="blur()" />
+                <span class="invalid-feedback" *ngIf="displayMessage.custFirstName">
+                  {{displayMessage.custFirstName}}
+                </span>
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="custLastName">Last Name</label>
+
+              <div class="col-md-9">
+                <input [ngClass]="{'is-invalid': displayMessage.custLastName}" 
+                      class="form-control"
+                      id="custLastName"
+                      type="text"
+                      placeholder="Please enter last name"
+                      formControlName="custLastName"
+                      (blur)="blur()" />
+                <span class="invalid-feedback" *ngIf="displayMessage.custLastName">
+                  {{displayMessage.custLastName}}
+                </span>
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="custDOB">DOB</label>
+              
+              <div class="col-md-9">
+                <input [ngClass]="{'is-invalid': displayMessage.custDOB}" 
+                      class="form-control"
+                      id="custDOB"
+                      type="text"
+                      placeholder="Please enter DOB (DD/MM/YYYY - Required)"
+                      formControlName="custDOB"
+                      (blur)="blur()" />
+                <span class="invalid-feedback" *ngIf="displayMessage.custDOB">
+                  {{displayMessage.custDOB}}
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="custEmail">Email Address</label>
+
+              <div class="col-md-9">
+                <input [ngClass]="{'is-invalid': displayMessage.custEmail}" 
+                      class="form-control"
+                      id="custEmail"
+                      type="text"
+                      placeholder="Please ender email address (required)"
+                      formControlName="custEmail"
+                      (blur)="blur()" />
+                <span class="invalid-feedback" *ngIf="displayMessage.custEmail">
+                  {{displayMessage.custEmail}}
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="custPhone">Phone number</label>
+              
+              <div class="col-md-9">
+                <input [ngClass]="{'is-invalid': displayMessage.custPhone}" 
+                      class="form-control"
+                      id="custPhone"
+                      type="text"
+                      placeholder="Please enter phone number"
+                      formControlName="custPhone"
+                      (blur)="blur()" />
+                <span class="invalid-feedback" *ngIf="displayMessage.custPhone">
+                  {{displayMessage.custPhone}}
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="custAddress">Address</label>
+              
+              <div class="col-md-9">
+                <input [ngClass]="{'is-invalid': displayMessage.custAddress}" 
+                      class="form-control"
+                      id="custAddress"
+                      type="text"
+                      placeholder="Please enter address"
+                      formControlName="custAddress"
+                      (blur)="blur()" />
+                <span class="invalid-feedback" *ngIf="displayMessage.custAddress">
+                  {{displayMessage.custAddress}}
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-10 col-md-offset-2">
+                <span>
+                  <button class="btn btn-primary" type="submit" style="width:80px;margin-right:10px" [disabled]="!customerForm.valid || !customerForm.dirty">
+                    Save
+                  </button>
+                </span>
+                <span>
+                  <button class="btn btn-light" type="button" style="width:80px;margin-right:10px" (click)="cancelEdit()">
+                    Cancel
+                  </button>
+                </span>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      Error: {{ errorMessage }}
+    </div>
   </div>
-  <div class="card-body">
-    <form novalidate (ngSubmit)="saveCustomer()" [formGroup]="customerForm">
-      <fieldset>
-        <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="custFirstName">First Name</label>
-          <div class="col-md-9">
-            <input [ngClass]="{'is-invalid': displayMessage.custFirstName }" 
-                   class="form-control" 
-                   id="custFirstName" 
-                   type="text" 
-                   placeholder="Please enter first name (required)" 
-                   formControlName="custFirstName" 
-                   (blur)="blur()" />
-            <span class="invalid-feedback" *ngIf="displayMessage.custFirstName">
-              {{displayMessage.custFirstName}}
-            </span>
-          </div>
-        </div>
-         
-        <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="custLastName">Last Name</label>
-
-          <div class="col-md-9">
-            <input [ngClass]="{'is-invalid': displayMessage.custLastName}" 
-                   class="form-control"
-                   id="custLastName"
-                   type="text"
-                   placeholder="Please enter last name"
-                   formControlName="custLastName"
-                   (blur)="blur()" />
-            <span class="invalid-feedback" *ngIf="displayMessage.custLastName">
-              {{displayMessage.custLastName}}
-            </span>
-          </div>
-        </div>
-    
-        <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="custDOB">DOB</label>
-          
-          <div class="col-md-9">
-            <input [ngClass]="{'is-invalid': displayMessage.custDOB}" 
-                  class="form-control"
-                  id="custDOB"
-                  type="text"
-                  placeholder="Please enter DOB (DD/MM/YYYY - Required)"
-                  formControlName="custDOB"
-                  (blur)="blur()" />
-            <span class="invalid-feedback" *ngIf="displayMessage.custDOB">
-              {{displayMessage.custDOB}}
-            </span>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="custEmail">Email Address</label>
-
-          <div class="col-md-9">
-            <input [ngClass]="{'is-invalid': displayMessage.custEmail}" 
-                   class="form-control"
-                   id="custEmail"
-                   type="text"
-                   placeholder="Please ender email address (required)"
-                   formControlName="custEmail"
-                   (blur)="blur()" />
-            <span class="invalid-feedback" *ngIf="displayMessage.custEmail">
-              {{displayMessage.custEmail}}
-            </span>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="custPhone">Phone number</label>
-          
-          <div class="col-md-9">
-            <input [ngClass]="{'is-invalid': displayMessage.custPhone}" 
-                   class="form-control"
-                   id="custPhone"
-                   type="text"
-                   placeholder="Please enter phone number"
-                   formControlName="custPhone"
-                   (blur)="blur()" />
-            <span class="invalid-feedback" *ngIf="displayMessage.custPhone">
-              {{displayMessage.custPhone}}
-            </span>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="custAddress">Address</label>
-          
-          <div class="col-md-9">
-            <input [ngClass]="{'is-invalid': displayMessage.custAddress}" 
-                   class="form-control"
-                   id="custAddress"
-                   type="text"
-                   placeholder="Please enter address"
-                   formControlName="custAddress"
-                   (blur)="blur()" />
-            <span class="invalid-feedback" *ngIf="displayMessage.custAddress">
-              {{displayMessage.custAddress}}
-            </span>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="col-md-10 col-md-offset-2">
-            <span>
-              <button class="btn btn-primary" type="submit" style="width:80px;margin-right:10px" [disabled]="!customerForm.valid || !customerForm.dirty">
-                Save
-              </button>
-            </span>
-            <span>
-              <button class="btn btn-light" type="button" style="width:80px;margin-right:10px" (click)="cancelEdit()">
-                Cancel
-              </button>
-            </span>
-          </div>
-        </div>
-      </fieldset>
-    </form>
-  </div>
-</div>
-<div *ngIf="errorMessage" class="alert alert-danger">
-  Error: {{ errorMessage }}
 </div>

@@ -1,4 +1,27 @@
-# AngularNgRxCRUDApp
+# Angular+NgRx Simple application 
+
+# :: -- YARN  -- ::
+## To Run this project as simple steps usng "Yarn"
+
+## Yarn - intsallation guideline (if not installed)
+
+Yearn getting started - https://classic.yarnpkg.com/en/docs/getting-started
+
+## Once successfully installed 
+
+Download / fork this project from Repo 
+
+USING Yarn:: 
+
+        Run: `yarn` or `yarn install`
+        Start: `yanr start`
+        Start with AOT for DEV : `yarn start:aot` 
+        Build: `yarn build`
+        Test: `yarn test`
+
+# :: -- Alertnativilty ANGULAR CLI -- ::
+
+# Used Angular CLI to generate components and setup project 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 

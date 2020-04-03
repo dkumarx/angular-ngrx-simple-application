@@ -32,12 +32,12 @@ export class CustomerNewComponent implements OnInit, OnDestroy {
       custFirstName: {
         required: 'First Name is required.'
       },
-      custLastName: {
-        required: 'Last Name is required.'
+      custDOB: {
+        required: 'DOB (MM/DD/YYYY) is required.'
       },
       custEmail: {
         required: 'Email is required.'
-      },
+      }
     };
 
    this.genericValidator = new GenericValidator(this.validationMessages);
@@ -47,8 +47,11 @@ export class CustomerNewComponent implements OnInit, OnDestroy {
     // Define the form group
     this.customerForm = this.fb.group({
       custFirstName: ['', [Validators.required]],
-      custLastName: ['', Validators.required],
-      custEmail: ['', Validators.required]
+      custLastName: [''],
+      custDOB: ['', Validators.required],
+      custEmail: ['', Validators.required],
+      custPhone: [''],
+      custAddress: ['']
     });
 
 

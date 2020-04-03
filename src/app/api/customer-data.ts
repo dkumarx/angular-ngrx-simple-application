@@ -9,9 +9,12 @@ export class CustomerData implements InMemoryDbService {
                 id: 1,
                 custFirstName: 'Dummy cust',
                 custLastName: 'Last name',
-                custEmail: 'test@mailinator.com'
+                custDOB: '13/05/1987',
+                custEmail: 'test@mailinator.com',
+                custPhone: '0456398777',
+                custAddress: '3000 Melbournd CBD, VIC'
             }
         ];
-        return { customers };
+        return { customers }
     }
 }

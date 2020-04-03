@@ -1,13 +1,22 @@
 <div class="card" *ngIf="customer">
     <div class="card-header">
-      {{pageTitle}}
+      <h5>{{pageTitle}}</h5>
     </div>
     <div class="card-body">
         <div class="form-group row">
-            <span class="col-md-9 col-form-label">Full Name: {{this.customer.custFirstName}} {{this.customer.custLastName}}</span>
+            <h5 class="col-4 col-form-label">Full Name:</h5> {{this.customer.custFirstName}} {{this.customer.custLastName}}
         </div>
         <div class="form-group row">
-            <span class="col-md-9 col-form-label">Email address: {{this.customer.custEmail}}</span>
+            <h5 class="col-4 col-form-label">Date of Birth (DOB):</h5> {{this.customer.custDOB}}
+        </div>
+        <div class="form-group row">
+            <h5 class="col-4 col-form-label">Email address:</h5> {{this.customer.custEmail}}
+        </div>
+        <div class="form-group row">
+            <h5 class="col-4 col-form-label">Phone number:</h5> {{this.customer.custPhone}}
+        </div>
+        <div class="form-group row">
+            <h5 class="col-4 col-form-label">Address:</h5> {{this.customer.custAddress}}
         </div>
     </div>
   </div>

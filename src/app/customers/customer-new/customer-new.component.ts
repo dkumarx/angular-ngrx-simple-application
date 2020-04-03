@@ -32,6 +32,9 @@ export class CustomerNewComponent implements OnInit, OnDestroy {
       custFirstName: {
         required: 'First Name is required.'
       },
+      custLastName: {
+        required: 'Last Name is required.'
+      },
       custDOB: {
         required: 'DOB is required.',
         pattern: 'Please enter valid DOB (yyyy/MM/ddd)'
@@ -39,6 +42,12 @@ export class CustomerNewComponent implements OnInit, OnDestroy {
       custEmail: {
         required: 'Email is required.',
         pattern: 'Please enter valid email address.'
+      },
+      custPhone: {
+        required: 'Phone number is required.'
+      },
+      custAddress: {
+        required: 'Address is required.'
       }
     };
 
@@ -49,7 +58,7 @@ export class CustomerNewComponent implements OnInit, OnDestroy {
     // Define the form group
     this.customerForm = this.fb.group({
       custFirstName: ['', [Validators.required]],
-      custLastName: [''],
+      custLastName: ['',  Validators.required],
       custDOB: ['', 
         [
           Validators.required,
@@ -62,8 +71,8 @@ export class CustomerNewComponent implements OnInit, OnDestroy {
             Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ]
       ],
-      custPhone: [''],
-      custAddress: ['']
+      custPhone: ['', Validators.required],
+      custAddress: ['', Validators.required]
     });
 
 
